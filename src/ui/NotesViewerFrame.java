@@ -1,4 +1,3 @@
-
 package ui;
 
 import dao.NoteDAO;
@@ -13,7 +12,7 @@ import java.awt.*;
 public class NotesViewerFrame extends JFrame {
     private final User user;
     private final NoteDAO noteDAO = new NoteDAOImpl();
-    private final JTable table = new JTable(new DefaultTableModel(new Object[]{"Date","Note","From(AdminId)"},0));
+    private final JTable table = new JTable(new DefaultTableModel(new Object[]{"Date","Note","From"},0));
 
     public NotesViewerFrame(User user){
         super("Notes");
@@ -30,7 +29,15 @@ public class NotesViewerFrame extends JFrame {
         DefaultTableModel m = (DefaultTableModel) table.getModel();
         m.setRowCount(0);
         for (Note n : noteDAO.getNotesByUser(user.getId())){
-            m.addRow(new Object[]{ n.getCreatedAt(), n.getNoteText(), n.getAdminId() });
+            // Fetch admin name using adminId
+            String adminName = "";
+            try {
+                user.User admin = new dao.impl.UserDAOImpl().getUserById(n.getAdminId());
+                adminName = (admin != null) ? admin.getUsername() : "Unknown";
+            } catch (Exception e) {
+                adminName = "Unknown";
+            }
+            m.addRow(new Object[]{ n.getCreatedAt(), n.getNoteText(), adminName });
         }
     }
 }
