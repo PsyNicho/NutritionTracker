@@ -19,8 +19,8 @@ public class UserMenuDashboard extends JFrame {
         JPanel grid = new JPanel(new GridLayout(2,3,16,16));
         grid.setBorder(BorderFactory.createEmptyBorder(16,16,16,16));
 
-        grid.add(makeTile("Add Food", () -> new LogFoodFrame(user).setVisible(true)));
-        grid.add(makeTile("Log Food", () -> new AddFoodFrame(user).setVisible(true)));
+        grid.add(makeTile("Add Food", () -> new AddFoodFrame(user).setVisible(true)));
+        grid.add(makeTile("Log Food", () -> new LogFoodFrame(user).setVisible(true)));
         grid.add(makeTile("Food Eaten Today", () -> new FoodTodayFrame(user).setVisible(true)));
         grid.add(makeTile("Food History", () -> new FoodHistoryFrame(user).setVisible(true)));
         grid.add(makeTile("Notes by Admin", () -> new NotesViewerFrame(user).setVisible(true)));

@@ -2,9 +2,9 @@
 package nutritiontracker;
 
 import connection.DatabaseConnection;
-import ui.AdminDashboard;
+import ui.AdminMenuDashboard;
 import ui.LoginFrame;
-import ui.UserDashboard;
+import ui.UserMenuDashboard;
 import user.User;
 
 import javax.swing.*;
