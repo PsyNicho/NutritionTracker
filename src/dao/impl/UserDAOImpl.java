@@ -74,12 +74,61 @@ public class UserDAOImpl implements UserDAO {
         } catch (SQLException e) { e.printStackTrace(); }
     }
 
+    @Override
+    public List<User> getAllUsersByStatus(String status) {
+        List<User> users = new ArrayList<>();
+        String sql = "SELECT * FROM users WHERE status = ?";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, status);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+    User user = new User(
+        rs.getInt("id"),
+        rs.getString("username"),
+        rs.getString("password"),
+        rs.getString("role"),
+        rs.getString("status")
+    );
+    users.add(user);
+}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return users;
+    }
+
+    @Override
+    public List<User> getAllUsersByRole(String role) {
+        List<User> users = new ArrayList<>();
+        String sql = "SELECT * FROM users WHERE role = ?";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, role);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                User user = new User(
+                    rs.getInt("id"),
+                    rs.getString("username"),
+                    rs.getString("password"),
+                    rs.getString("role"),
+                    rs.getString("status")
+                );
+                users.add(user);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return users;
+    }
+
     private User mapUser(ResultSet rs) throws SQLException {
         return new User(
                 rs.getInt("id"),
                 rs.getString("username"),
                 rs.getString("password"),
-                rs.getString("role")
+                rs.getString("role"),
+                rs.getString("status")
         );
     }
 }

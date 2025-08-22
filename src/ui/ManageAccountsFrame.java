@@ -1,4 +1,3 @@
-
 package ui;
 
 import dao.UserDAO;
@@ -71,7 +70,7 @@ public class ManageAccountsFrame extends JFrame {
         String p = new String(password.getPassword());
         String r = (String) role.getSelectedItem();
         if (u.isEmpty() || p.isEmpty()){ JOptionPane.showMessageDialog(this, "Enter username & password."); return; }
-        userDAO.addUser(new User(0,u,p,r));
+        userDAO.addUser(new User(0, u, p, r, "user")); // or the appropriate status
         username.setText(""); password.setText("");
         refresh();
     }

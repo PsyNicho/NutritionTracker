@@ -1,4 +1,3 @@
-
 package ui;
 
 import dao.UserDAO;
@@ -31,7 +30,8 @@ public class AdminUserListFrame extends JFrame {
     private void refresh(){
         DefaultTableModel m = (DefaultTableModel) table.getModel();
         m.setRowCount(0);
-        for (User u : userDAO.getAllUsers()){
+        List<User> users = userDAO.getAllUsersByRole("user");
+        for (User u : users){
             m.addRow(new Object[]{u.getId(), u.getUsername(), u.getRole(), "View"});
         }
     }
