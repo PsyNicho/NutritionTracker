@@ -111,14 +111,6 @@ public class AdminMenuDashboard extends JFrame {
         manageAccountsBtn.setMargin(new Insets(0, 30, 0, 0));
         allUsersBtn.setMargin(new Insets(0, 30, 0, 0));
 
-        // Center the text inside the buttons
-        addFoodBtn.setHorizontalAlignment(SwingConstants.CENTER);
-        logFoodBtn.setHorizontalAlignment(SwingConstants.CENTER);
-        eatenTodayBtn.setHorizontalAlignment(SwingConstants.CENTER);
-        foodHistoryBtn.setHorizontalAlignment(SwingConstants.CENTER);
-        manageAccountsBtn.setHorizontalAlignment(SwingConstants.CENTER);
-        allUsersBtn.setHorizontalAlignment(SwingConstants.CENTER);
-
         // Add buttons vertically with spacing
         buttonPanel.add(addFoodBtn);
         buttonPanel.add(Box.createVerticalStrut(16));
