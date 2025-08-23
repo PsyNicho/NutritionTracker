@@ -16,16 +16,16 @@ public class UserMenuDashboard extends JFrame {
         setLayout(new BorderLayout());
 
         // Color palette from image
-        Color jasper = new Color(0xDD, 0x61, 0x4A);
-        Color coral = new Color(0xF4, 0x86, 0x68);
-        Color melon = new Color(0xF4, 0xA6, 0x98);
-        Color asparagus = new Color(0x61, 0xA7, 0x67);
-        Color cambridgeBlue = new Color(0x73, 0xA5, 0x80);
+        Color azure = new Color(0xCE, 0xE0, 0xDC);
+        Color columbiaBlue = new Color(0xB9, 0xCF, 0xD4);
+        Color roseQuartz = new Color(0xAF, 0xAA, 0xB9);
+        Color cambridgeBlue = new Color(0x82, 0xAA, 0x9E);
+        Color slateGray = new Color(0x79, 0x86, 0x93);
 
         // Sidebar panel for image, username, and logout
         JPanel sidebar = new JPanel();
         sidebar.setLayout(new BoxLayout(sidebar, BoxLayout.Y_AXIS));
-        sidebar.setBackground(jasper);
+        sidebar.setBackground(azure);
         sidebar.setBorder(BorderFactory.createEmptyBorder(32, 16, 32, 16));
 
         // Load image (save as user.png in src/ui)
@@ -45,8 +45,8 @@ public class UserMenuDashboard extends JFrame {
         // Logout button
         JButton logoutBtn = new JButton("Logout");
         logoutBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
-        logoutBtn.setBackground(melon);
-        logoutBtn.setForeground(Color.BLACK);
+        logoutBtn.setBackground(roseQuartz);
+        logoutBtn.setForeground(Color.WHITE);
         logoutBtn.setFocusPainted(false);
         logoutBtn.setMaximumSize(new Dimension(120, 36));
         logoutBtn.addActionListener(e -> {
@@ -63,16 +63,16 @@ public class UserMenuDashboard extends JFrame {
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
         buttonPanel.setBorder(BorderFactory.createEmptyBorder(32, 32, 32, 32));
-        buttonPanel.setBackground(coral);
+        buttonPanel.setBackground(columbiaBlue);
 
         int buttonWidth = 200;
         int buttonHeight = 40;
         Dimension btnSize = new Dimension(buttonWidth, buttonHeight);
 
         JButton addFoodBtn = makeTile("Add Food", () -> new AddFoodFrame(user).setVisible(true), cambridgeBlue, Color.WHITE);
-        JButton logFoodBtn = makeTile("Log Food", () -> new LogFoodFrame(user).setVisible(true), asparagus, Color.WHITE);
+        JButton logFoodBtn = makeTile("Log Food", () -> new LogFoodFrame(user).setVisible(true), slateGray, Color.WHITE);
         JButton eatenTodayBtn = makeTile("Food Eaten Today", () -> new FoodTodayFrame(user).setVisible(true), cambridgeBlue, Color.WHITE);
-        JButton foodHistoryBtn = makeTile("Food History", () -> new FoodHistoryFrame(user).setVisible(true), asparagus, Color.WHITE);
+        JButton foodHistoryBtn = makeTile("Food History", () -> new FoodHistoryFrame(user).setVisible(true), slateGray, Color.WHITE);
         JButton notesBtn = makeTile("Notes by Admin", () -> new NotesViewerFrame(user).setVisible(true), cambridgeBlue, Color.WHITE);
 
         addFoodBtn.setMaximumSize(btnSize);

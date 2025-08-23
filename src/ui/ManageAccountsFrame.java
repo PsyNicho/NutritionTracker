@@ -92,6 +92,11 @@ public class ManageAccountsFrame extends JFrame {
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.getViewport().setBackground(columbiaBlue);
         add(scrollPane, BorderLayout.CENTER);
+
+        // Update background colors for panels
+        create.setBackground(new Color(0x82, 0xAA, 0x9E)); // Cambridge Blue
+        change.setBackground(new Color(0xB9, 0xCF, 0xD4)); // Columbia Blue
+        del.setBackground(new Color(0x82, 0xAA, 0x9E)); // Cambridge Blue
     }
 
     private void onCreate(){
