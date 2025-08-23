@@ -12,18 +12,45 @@ import java.util.List;
 public class AdminUserListFrame extends JFrame {
     private final User admin;
     private final UserDAO userDAO = new UserDAOImpl();
-    private final JTable table = new JTable(new DefaultTableModel(new Object[]{"ID","Username","Role","View"},0));
+    private final JTable table = new JTable(new DefaultTableModel(new Object[]{"ID","Username","View"},0));
 
     public AdminUserListFrame(User admin){
         super("All Users");
         this.admin = admin;
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(new BorderLayout());
-        add(new JScrollPane(table), BorderLayout.CENTER);
+
+        // Apply new color scheme
+        Color azure = new Color(0xCE, 0xE0, 0xDC);
+        Color columbiaBlue = new Color(0xB9, 0xCF, 0xD4);
+        Color roseQuartz = new Color(0xAF, 0xAA, 0xB9);
+        Color cambridgeBlue = new Color(0x82, 0xAA, 0x9E);
+        Color slateGray = new Color(0x79, 0x86, 0x93);
+
+        getContentPane().setBackground(azure);
+        JScrollPane scrollPane = new JScrollPane(table);
+        scrollPane.getViewport().setBackground(columbiaBlue);
+        add(scrollPane, BorderLayout.CENTER);
+
+        table.setBackground(slateGray);
+        table.setForeground(Color.BLACK);
+        table.setGridColor(roseQuartz);
+        table.setSelectionBackground(cambridgeBlue);
+        table.setSelectionForeground(Color.WHITE);
+
         setSize(600,360);
         setLocationRelativeTo(null);
         refresh();
-        table.getColumn("View").setCellRenderer(new ButtonRenderer());
+        // Set the background color of the "View" button to AFAAB9
+        table.getColumn("View").setCellRenderer(new ButtonRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                JButton button = (JButton) super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                button.setBackground(new Color(0xAF, 0xAA, 0xB9));
+                button.setForeground(Color.WHITE);
+                return button;
+            }
+        });
         table.getColumn("View").setCellEditor(new ButtonEditor(new JCheckBox(), (id) -> new ViewUserFrame(admin, id).setVisible(true)));
     }
 
@@ -32,7 +59,7 @@ public class AdminUserListFrame extends JFrame {
         m.setRowCount(0);
         List<User> users = userDAO.getAllUsersByRole("user");
         for (User u : users){
-            m.addRow(new Object[]{u.getId(), u.getUsername(), u.getRole(), "View"});
+            m.addRow(new Object[]{u.getId(), u.getUsername(), "View"});
         }
     }
 }

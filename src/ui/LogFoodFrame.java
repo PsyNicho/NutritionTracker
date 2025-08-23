@@ -31,6 +31,15 @@ public class LogFoodFrame extends JFrame {
         JPanel panel = new JPanel(new GridLayout(3, 2, 8, 8));
         panel.setBorder(BorderFactory.createEmptyBorder(16, 16, 16, 16));
 
+        // Apply new color scheme
+        Color azure = new Color(0xCE, 0xE0, 0xDC);
+        Color columbiaBlue = new Color(0xB9, 0xCF, 0xD4);
+        Color roseQuartz = new Color(0xAF, 0xAA, 0xB9);
+        Color cambridgeBlue = new Color(0x82, 0xAA, 0x9E);
+        Color slateGray = new Color(0x79, 0x86, 0x93);
+
+        panel.setBackground(azure);
+
         panel.add(new JLabel("Select Food:"));
         foodComboBox = new JComboBox<>();
         loadFoods();
@@ -42,11 +51,24 @@ public class LogFoodFrame extends JFrame {
 
         JButton logButton = new JButton("Log Food");
         logButton.addActionListener(new LogFoodAction());
+        logButton.setBackground(cambridgeBlue);
+        logButton.setForeground(Color.WHITE);
         panel.add(logButton);
 
         JButton closeButton = new JButton("Close");
         closeButton.addActionListener(e -> dispose());
+        closeButton.setBackground(slateGray);
+        closeButton.setForeground(Color.WHITE);
         panel.add(closeButton);
+
+        for (Component comp : panel.getComponents()) {
+            if (comp instanceof JLabel) {
+                comp.setForeground(roseQuartz);
+            } else if (comp instanceof JTextField || comp instanceof JComboBox) {
+                comp.setBackground(columbiaBlue);
+                comp.setForeground(Color.BLACK);
+            }
+        }
 
         add(panel);
     }

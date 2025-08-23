@@ -37,7 +37,30 @@ public class ViewUserFrame extends JFrame {
         top.add(new JLabel("Date:")); top.add(date); top.add(show);
         add(top, BorderLayout.NORTH);
 
-        add(new JScrollPane(table), BorderLayout.CENTER);
+        // Apply new color scheme
+        Color azure = new Color(0xCE, 0xE0, 0xDC);
+        Color columbiaBlue = new Color(0xB9, 0xCF, 0xD4);
+        Color roseQuartz = new Color(0xAF, 0xAA, 0xB9);
+        Color cambridgeBlue = new Color(0x82, 0xAA, 0x9E);
+        Color slateGray = new Color(0x79, 0x86, 0x93);
+
+        getContentPane().setBackground(azure);
+        JScrollPane scrollPane = new JScrollPane(table);
+        scrollPane.getViewport().setBackground(columbiaBlue);
+        add(scrollPane, BorderLayout.CENTER);
+        
+        table.setBackground(slateGray);
+        table.setForeground(Color.BLACK);
+        table.setGridColor(roseQuartz);
+        table.setSelectionBackground(cambridgeBlue);
+        table.setSelectionForeground(Color.WHITE);
+
+        totals.setForeground(roseQuartz);
+        noteText.setBackground(columbiaBlue);
+        noteText.setForeground(Color.BLACK);
+        addNoteBtn.setBackground(cambridgeBlue);
+        addNoteBtn.setForeground(Color.WHITE);
+
         JPanel south = new JPanel(new BorderLayout());
         south.add(totals, BorderLayout.NORTH);
         JPanel notePanel = new JPanel(new BorderLayout());

@@ -54,7 +54,31 @@ public class ManageAccountsFrame extends JFrame {
         left.add(create); left.add(change); left.add(del);
 
         add(left, BorderLayout.NORTH);
-        add(new JScrollPane(table), BorderLayout.CENTER);
+        // Apply new color scheme
+        Color azure = new Color(0xCE, 0xE0, 0xDC);
+        Color columbiaBlue = new Color(0xB9, 0xCF, 0xD4);
+        Color roseQuartz = new Color(0xAF, 0xAA, 0xB9);
+        Color cambridgeBlue = new Color(0x82, 0xAA, 0x9E);
+        Color slateGray = new Color(0x79, 0x86, 0x93);
+
+        getContentPane().setBackground(azure);
+        table.setBackground(slateGray);
+        table.setForeground(Color.BLACK);
+        table.setGridColor(roseQuartz);
+        table.setSelectionBackground(cambridgeBlue);
+        table.setSelectionForeground(Color.WHITE);
+
+        createBtn.setBackground(roseQuartz);
+        createBtn.setForeground(Color.WHITE);
+        createBtn.setOpaque(true);
+
+        changePwBtn.setBackground(roseQuartz);
+        changePwBtn.setForeground(Color.WHITE);
+        changePwBtn.setOpaque(true);
+
+        deleteBtn.setBackground(roseQuartz);
+        deleteBtn.setForeground(Color.WHITE);
+        deleteBtn.setOpaque(true);
 
         setSize(760,480);
         setLocationRelativeTo(null);
@@ -63,6 +87,11 @@ public class ManageAccountsFrame extends JFrame {
         changePwBtn.addActionListener(e -> onChangePw());
         deleteBtn.addActionListener(e -> onDelete());
         refresh();
+
+        // Set background color for empty table
+        JScrollPane scrollPane = new JScrollPane(table);
+        scrollPane.getViewport().setBackground(columbiaBlue);
+        add(scrollPane, BorderLayout.CENTER);
     }
 
     private void onCreate(){

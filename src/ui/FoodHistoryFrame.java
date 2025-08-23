@@ -1,4 +1,3 @@
-
 package ui;
 
 import dao.FoodLogDAO;
@@ -33,10 +32,36 @@ public class FoodHistoryFrame extends JFrame {
         north.add(go);
         add(north, BorderLayout.NORTH);
 
-        add(new JScrollPane(table), BorderLayout.CENTER);
+        // Define color scheme variables
+        Color azure = new Color(0xCE, 0xE0, 0xDC);
+        Color columbiaBlue = new Color(0xB9, 0xCF, 0xD4);
+        Color roseQuartz = new Color(0xAF, 0xAA, 0xB9);
+        Color cambridgeBlue = new Color(0x82, 0xAA, 0x9E);
+        Color slateGray = new Color(0x79, 0x86, 0x93);
+
+        // Ensure background color is applied to the entire frame and table area
+        getContentPane().setBackground(azure);
+
+        // Explicitly set the background color for the table's parent scroll pane
+        JScrollPane scrollPane = new JScrollPane(table);
+        scrollPane.getViewport().setBackground(columbiaBlue);
+        add(scrollPane, BorderLayout.CENTER);
         add(totals, BorderLayout.SOUTH);
         setSize(720,420);
         setLocationRelativeTo(null);
+
+        // Apply new color scheme
+        getContentPane().setBackground(azure);
+        table.setBackground(slateGray);
+        table.setForeground(Color.BLACK);
+        table.setGridColor(roseQuartz);
+        table.setSelectionBackground(cambridgeBlue);
+        table.setSelectionForeground(Color.WHITE);
+        totals.setForeground(roseQuartz);
+
+        // Set the Show button color to AFAAB9 (Rose Quartz)
+        go.setBackground(roseQuartz);
+        go.setForeground(Color.WHITE);
 
         go.addActionListener(e -> refresh());
         refresh();
