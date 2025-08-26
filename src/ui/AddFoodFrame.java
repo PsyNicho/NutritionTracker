@@ -51,7 +51,7 @@ public class AddFoodFrame extends JFrame {
         panel.add(fatsField);
 
         panel.add(new JLabel("Fiber per 100g (g):"));
-        fiberField = new JTextField("0");
+        fiberField = new JTextField();
         panel.add(fiberField);
 
         JButton addButton = new JButton("Add Food");
@@ -64,7 +64,6 @@ public class AddFoodFrame extends JFrame {
 
         add(panel);
 
-        // Apply new color scheme
         Color azure = new Color(0xCE, 0xE0, 0xDC);
         Color columbiaBlue = new Color(0xB9, 0xCF, 0xD4);
         Color roseQuartz = new Color(0xAF, 0xAA, 0xB9);
@@ -107,7 +106,6 @@ public class AddFoodFrame extends JFrame {
                     fiber = Double.parseDouble(fiberTxt);
                 }
 
-                // Use default constructor + setters to match Food.java
                 Food food = new Food();
                 food.setUserId(user.getId());
                 food.setName(name);

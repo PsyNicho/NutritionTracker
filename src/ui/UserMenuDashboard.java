@@ -15,34 +15,29 @@ public class UserMenuDashboard extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(new BorderLayout());
 
-        // Color palette from image
         Color azure = new Color(0xCE, 0xE0, 0xDC);
         Color columbiaBlue = new Color(0xB9, 0xCF, 0xD4);
         Color roseQuartz = new Color(0xAF, 0xAA, 0xB9);
         Color cambridgeBlue = new Color(0x82, 0xAA, 0x9E);
         Color slateGray = new Color(0x79, 0x86, 0x93);
 
-        // Sidebar panel for image, username, and logout
         JPanel sidebar = new JPanel();
         sidebar.setLayout(new BoxLayout(sidebar, BoxLayout.Y_AXIS));
         sidebar.setBackground(azure);
         sidebar.setBorder(BorderFactory.createEmptyBorder(32, 16, 32, 16));
 
-        // Load image (save as user.png in src/ui)
         JLabel imgLabel = new JLabel();
         ImageIcon icon = new ImageIcon(getClass().getResource("user.png"));
         Image scaledImg = icon.getImage().getScaledInstance(150, 208, Image.SCALE_SMOOTH);
         imgLabel.setIcon(new ImageIcon(scaledImg));
         imgLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        // Username label
         JLabel userLabel = new JLabel(user.getUsername());
         userLabel.setFont(new Font("Arial", Font.BOLD, 18));
         userLabel.setForeground(Color.WHITE);
         userLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         userLabel.setBorder(BorderFactory.createEmptyBorder(12, 0, 12, 0));
 
-        // Logout button
         JButton logoutBtn = new JButton("Logout");
         logoutBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
         logoutBtn.setBackground(roseQuartz);
@@ -59,7 +54,6 @@ public class UserMenuDashboard extends JFrame {
         sidebar.add(Box.createVerticalStrut(8));
         sidebar.add(logoutBtn);
 
-        // Use BoxLayout for 5 rows (vertical) for dashboard buttons
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
         buttonPanel.setBorder(BorderFactory.createEmptyBorder(32, 32, 32, 32));

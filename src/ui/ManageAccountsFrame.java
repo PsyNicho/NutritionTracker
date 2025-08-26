@@ -54,7 +54,6 @@ public class ManageAccountsFrame extends JFrame {
         left.add(create); left.add(change); left.add(del);
 
         add(left, BorderLayout.NORTH);
-        // Apply new color scheme
         Color azure = new Color(0xCE, 0xE0, 0xDC);
         Color columbiaBlue = new Color(0xB9, 0xCF, 0xD4);
         Color roseQuartz = new Color(0xAF, 0xAA, 0xB9);
@@ -88,12 +87,10 @@ public class ManageAccountsFrame extends JFrame {
         deleteBtn.addActionListener(e -> onDelete());
         refresh();
 
-        // Set background color for empty table
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.getViewport().setBackground(columbiaBlue);
         add(scrollPane, BorderLayout.CENTER);
 
-        // Update background colors for panels
         create.setBackground(new Color(0x82, 0xAA, 0x9E)); // Cambridge Blue
         change.setBackground(new Color(0xB9, 0xCF, 0xD4)); // Columbia Blue
         del.setBackground(new Color(0x82, 0xAA, 0x9E)); // Cambridge Blue
@@ -104,7 +101,7 @@ public class ManageAccountsFrame extends JFrame {
         String p = new String(password.getPassword());
         String r = (String) role.getSelectedItem();
         if (u.isEmpty() || p.isEmpty()){ JOptionPane.showMessageDialog(this, "Enter username & password."); return; }
-        userDAO.addUser(new User(0, u, p, r, "user")); // or the appropriate status
+        userDAO.addUser(new User(0, u, p, r, "user")); 
         username.setText(""); password.setText("");
         refresh();
     }

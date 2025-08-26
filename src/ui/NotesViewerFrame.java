@@ -23,17 +23,14 @@ public class NotesViewerFrame extends JFrame {
         setLocationRelativeTo(null);
         refresh();
 
-        // Apply new color scheme
         Color azure = new Color(0xCE, 0xE0, 0xDC);
         Color columbiaBlue = new Color(0xB9, 0xCF, 0xD4);
         Color roseQuartz = new Color(0xAF, 0xAA, 0xB9);
         Color cambridgeBlue = new Color(0x82, 0xAA, 0x9E);
         Color slateGray = new Color(0x79, 0x86, 0x93);
 
-        // Ensure background color is applied to the entire frame and table area
         getContentPane().setBackground(azure);
 
-        // Explicitly set the background color for the table's parent scroll pane
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.getViewport().setBackground(columbiaBlue);
         add(scrollPane, BorderLayout.CENTER);

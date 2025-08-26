@@ -31,7 +31,6 @@ public class LogFoodFrame extends JFrame {
         JPanel panel = new JPanel(new GridLayout(3, 2, 8, 8));
         panel.setBorder(BorderFactory.createEmptyBorder(16, 16, 16, 16));
 
-        // Apply new color scheme
         Color azure = new Color(0xCE, 0xE0, 0xDC);
         Color columbiaBlue = new Color(0xB9, 0xCF, 0xD4);
         Color roseQuartz = new Color(0xAF, 0xAA, 0xB9);

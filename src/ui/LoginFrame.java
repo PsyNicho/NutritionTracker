@@ -27,7 +27,6 @@ public class LoginFrame extends JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
 
-        // Background panel as main content pane
         JPanel backgroundPanel = new JPanel() {
             private final Image backgroundImage;
             {
@@ -40,7 +39,6 @@ public class LoginFrame extends JFrame {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 if (backgroundImage != null) {
-                    // Move image 30 pixels up (negative y offset)
                     g.drawImage(backgroundImage, 0, -40, getWidth(), getHeight(), this);
                 }
             }
@@ -48,12 +46,11 @@ public class LoginFrame extends JFrame {
         backgroundPanel.setLayout(new BorderLayout());
         setContentPane(backgroundPanel);
 
-        // Form Panel
         JPanel formPanel = new JPanel();
-        formPanel.setOpaque(false); // <-- Important: keep transparent
+        formPanel.setOpaque(false); 
         formPanel.setLayout(new BoxLayout(formPanel, BoxLayout.Y_AXIS));
 
-        formPanel.setBorder(BorderFactory.createEmptyBorder(270, 0, 0, 0)); // Shift down by 110px (was 80)
+        formPanel.setBorder(BorderFactory.createEmptyBorder(270, 0, 0, 0));
 
         username.setMaximumSize(new Dimension(280, 40));
         username.setBorder(BorderFactory.createTitledBorder("Username"));
@@ -73,10 +70,8 @@ public class LoginFrame extends JFrame {
         formPanel.add(Box.createVerticalStrut(20));
         formPanel.add(loginBtn);
 
-        // Add components
         backgroundPanel.add(formPanel, BorderLayout.CENTER);
 
-        // Button action
         loginBtn.addActionListener((ActionEvent e) -> doLogin());
     }
 
@@ -88,7 +83,6 @@ public class LoginFrame extends JFrame {
             JOptionPane.showMessageDialog(this, "Invalid username or password");
             return;
         }
-        // Open appropriate dashboard
         SwingUtilities.invokeLater(() -> {
             if ("admin".equalsIgnoreCase(user.getRole())) {
                 new AdminMenuDashboard(user, this).setVisible(true);

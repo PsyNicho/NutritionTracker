@@ -37,7 +37,6 @@ public class ViewUserFrame extends JFrame {
         top.add(new JLabel("Date:")); top.add(date); top.add(show);
         add(top, BorderLayout.NORTH);
 
-        // Apply new color scheme
         Color azure = new Color(0xCE, 0xE0, 0xDC);
         Color columbiaBlue = new Color(0xB9, 0xCF, 0xD4);
         Color roseQuartz = new Color(0xAF, 0xAA, 0xB9);

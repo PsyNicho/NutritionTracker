@@ -20,7 +20,6 @@ public class AdminUserListFrame extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(new BorderLayout());
 
-        // Apply new color scheme
         Color azure = new Color(0xCE, 0xE0, 0xDC);
         Color columbiaBlue = new Color(0xB9, 0xCF, 0xD4);
         Color roseQuartz = new Color(0xAF, 0xAA, 0xB9);
@@ -41,7 +40,7 @@ public class AdminUserListFrame extends JFrame {
         setSize(600,360);
         setLocationRelativeTo(null);
         refresh();
-        // Set the background color of the "View" button to AFAAB9
+   
         table.getColumn("View").setCellRenderer(new ButtonRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
